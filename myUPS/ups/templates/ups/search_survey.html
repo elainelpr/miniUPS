@@ -1,0 +1,38 @@
+{% extends 'ups/survey_base.html' %}
+
+{% block contentPage %} 
+    <center>
+        <h3>Comment Package</h3>
+    </center>
+
+    <table width="600" border="0" class="table">
+        <tr>
+            <center>
+                <h5>packageID / Status</h5>
+            </center>
+        </tr>
+
+        <tr>
+            <td>
+                <center>
+                    <div class="form-group">
+                        <form action="{% url 'package_comment' %}" method="post">
+                            {% csrf_token %}
+                            <div>
+                                <select name="packagelist">
+                                    {% for p in packagelist %}
+                                        <option value="{{p.packageid}}">{{p.packageid}} |
+                                            status:<h3>Delivered</h3> 
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <br/>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>
+                        </form>
+                    </div>
+                </center>   
+            </td>
+        </tr>
+    </table>
+{% endblock contentPage %}

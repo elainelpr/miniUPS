@@ -1,0 +1,53 @@
+{% extends 'ups/package_base.html' %}
+
+{% block contentPage %} 
+    <center>
+        <h3>All package information</h3>
+    </center>
+
+    <table width="600" border="0" class="table">
+        <tr>
+            <center>
+                <h5>packageID / Status</h5>
+            </center>
+        </tr>
+
+        <tr>
+            <td>
+                <center>
+                    <div class="form-group">
+                        <form action="{% url 'all_package' %}" method="post">
+                            {% csrf_token %}
+                            <div>
+                                <select name="packagelist">
+                                    {% for p in packagelist %}
+                                        <option value="{{p.packageid}}">{{p.packageid}} |
+                                            status:
+                                            {% if p.status == none %}
+                                                <h3>None</h3>
+                                            {% elif p.status == 0 %}
+                                                <h3>Packing</h3>
+                                            {% elif p.status == 1 %}
+                                                <h3>Packed</h3>
+                                            {% elif p.status == 2 %}
+                                                <h3>Loading</h3>
+                                            {% elif p.status == 3 %}
+                                                <h3>Loaded</h3>
+                                            {% elif p.status == 4 %}
+                                                <h3>Delivering</h3>
+                                            {% else %}
+                                                <h3>Delivered</h3>
+                                            {% endif %}     
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <br/>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">View/Edit</button>
+                        </form>
+                    </div>
+                </center>   
+            </td>
+        </tr>
+    </table>
+{% endblock contentPage %}

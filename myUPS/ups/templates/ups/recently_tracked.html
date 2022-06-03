@@ -1,0 +1,39 @@
+{% extends 'ups/base.html' %}
+<link type="text/css" rel="stylesheet" href="../libs/bootstrap.css">
+
+
+{% block contentPage %}
+    <h3>Survey History</h3>
+    <table table width="400" border="0" class="table table-bordered">
+        <tr>
+            <th align="center">Package ID</th>
+            <th align="center">DestinationX</th>
+            <th align="center">DestinationY</th>
+            <th align="center">Status</th>
+            <th align="center">Search Time</th>
+        </tr>
+            {% for p in tracked %}
+                <tr>
+                    <td align="center">{{ p.package_id }}</td>
+                    <td align="center">{{ p.userx }}</td>
+                    <td align="center">{{ p.usery }}</td>
+                    {% if p.status == none %}
+                        <td align="center">None</td>
+                    {% elif p.status == 0 %}
+                        <td align="center">Packing</td>
+                    {% elif p.status == 1 %}
+                        <td align="center">Packed</td>
+                    {% elif p.status == 2 %}
+                        <td align="center">Loading</td>
+                    {% elif p.status == 3 %}
+                        <td align="center">Loaded</td>
+                    {% elif p.status == 4 %}
+                        <td align="center">Delivering</td>
+                    {% else %}
+                        <td align="center">Delivered</td>
+                    {% endif %}     
+                    <td align="center">{{ p.time }}</td>
+                </tr>
+            {% endfor %}
+    </table>
+{% endblock contentPage %}

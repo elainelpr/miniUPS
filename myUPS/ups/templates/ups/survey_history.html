@@ -1,0 +1,21 @@
+{% extends 'ups/survey_base.html' %}
+<link type="text/css" rel="stylesheet" href="../libs/bootstrap.css">
+
+
+{% block contentPage %}
+    <h3>Survey History</h3>
+    <table table width="400" border="0" class="table table-bordered">
+        <tr>
+            <th align="center">Package ID</th>
+            <th align="center">Comment</th>
+        </tr>
+            {% for p in package_history %}
+                <tr>
+                    <td align="center">{{ p.package_id }}</td>
+                    <td align="center">{{ p.comment }}</td>
+                </tr>
+            {% endfor %}
+    </table>
+    
+    
+{% endblock contentPage %}

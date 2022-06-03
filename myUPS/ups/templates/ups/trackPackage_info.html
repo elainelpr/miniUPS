@@ -1,0 +1,25 @@
+{% extends 'ups/track.html' %}
+<link type="text/css" rel="stylesheet" href="../libs/bootstrap.css">
+
+
+{% block contentPage %}
+    <h3>Package Information</h3>
+    <table table width="400" border="0" class="table table-bordered">
+        <tr>
+            <th align="center">Track Number</th>
+            <th align="center">Status</th>
+            <th align="center">DestinationX</th>
+            <th align="center">DestinationY</th>
+        </tr>
+        <tr>
+            
+            <td align="center">{{ ob_package.packageid }}</td>
+            <td align="center">{{ ob_package.status }}</td>
+            <td align="center">{{ ob_package.userx }}</td>
+            <td align="center">{{ ob_package.usery }}</td>
+            
+        </tr>
+    </table>
+    
+    
+{% endblock contentPage %}

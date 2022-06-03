@@ -1,0 +1,18 @@
+{% extends 'ups/survey_base.html' %}
+
+{% block contentPage %} 
+    <center>
+        <form action="{% url 'finish_survey' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="comment">Comment for package {{ob_package.packageid}}</label>
+                <textarea class="form-control" rows="5" id="comment" name="package_comment"></textarea>
+            </div>
+            <br/>
+            <input type="hidden" name="package_info" value="{{ob_package.packageid}}">
+            <input type="hidden" name="buyer_id" value="{{ob_package.user_id}}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+        </form>
+    </center>
+{% endblock contentPage %}
+
